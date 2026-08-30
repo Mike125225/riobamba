@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Riobamba SLT 2027 · MEDLIFE Sault College</title>
+<meta name="description" content="Nine days in the Ecuadorian Andes with MEDLIFE Sault College, May 22 to 30, 2027. Full itinerary, cost, and how to get on the list.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,900;1,9..144,500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ground:#f7f4ee; --card:#fffdf9; --ink:#1c1712; --ink-soft:#5f5346;
+    --accent:#1f7fb8; --accent-ink:#0d4a6e;
+    --rule:#e6ddcd; --deep:#141210; --good:#2e7d5b;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--ground); color:var(--ink);
+    font:400 17px/1.65 'Archivo', system-ui, sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .wrap{max-width:720px; margin:0 auto; padding:0 22px;}
+  h1,h2,h3{font-family:'Fraunces', Georgia, serif; font-weight:900; line-height:1.05; letter-spacing:-.015em; text-wrap:balance;}
+  a{color:var(--accent); text-decoration-thickness:1px; text-underline-offset:2px;}
+  strong{font-weight:700;}
+
+  /* hero */
+  .hero{position:relative; height:min(86vh, 820px); min-height:540px; display:flex; align-items:flex-end; color:#fbf7f1; overflow:hidden;}
+  .hero img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 42%;}
+  .hero::after{content:""; position:absolute; inset:0; background:
+     linear-gradient(180deg, rgba(16,13,11,.28) 0%, rgba(16,13,11,0) 26%, rgba(16,13,11,.14) 52%, rgba(16,13,11,.72) 78%, rgba(16,13,11,.94) 100%);}
+  .hero .wrap{position:relative; z-index:1; padding-top:48px; padding-bottom:52px;}
+  .eyebrow{font:800 13px/1.3 'Archivo'; letter-spacing:.16em; text-transform:uppercase; color:#bfe0f2; margin:0 0 18px;}
+  .hero h1{font-size:clamp(46px, 12vw, 78px); margin:0; text-shadow:0 2px 30px rgba(16,13,11,.5), 0 1px 5px rgba(16,13,11,.35);}
+  .hero h1 em{font-style:italic; font-weight:500; color:#bfe0f2;}
+  .hero .dates{font:800 clamp(15px,4.4vw,19px)/1.3 'Archivo'; letter-spacing:.02em; text-transform:uppercase; margin:20px 0 0; color:#fbf7f1;}
+  .hero p.lede{font-size:clamp(16px,4.6vw,19px); line-height:1.5; max-width:32ch; margin:16px 0 30px; color:#f0e9df;}
+
+  .btn{
+    display:inline-block; background:var(--accent); color:#fff; font:800 16px/1 'Archivo';
+    letter-spacing:.01em; padding:17px 26px; border-radius:999px; text-decoration:none;
+    box-shadow:0 10px 24px -10px rgba(31,127,184,.7); transition:transform .12s ease;
+  }
+  .btn:hover{transform:translateY(-1px);}
+  .btn.ghost{background:transparent; color:#fbf7f1; box-shadow:inset 0 0 0 1.5px rgba(251,247,241,.55);}
+
+  section{padding:56px 0; border-top:1px solid var(--rule);}
+  section:first-of-type{border-top:0;}
+  section h2{font-size:clamp(28px,7vw,38px); margin:0 0 8px;}
+  .kicker{font:800 12px/1.3 'Archivo'; letter-spacing:.16em; text-transform:uppercase; color:var(--accent); margin:0 0 14px;}
+  section p{margin:0 0 16px;}
+
+  .pillars{list-style:none; padding:0; margin:22px 0 0; display:grid; gap:2px; background:var(--rule); border:1px solid var(--rule); border-radius:14px; overflow:hidden;}
+  .pillars li{background:var(--card); padding:18px 20px;}
+  .pillars b{display:block; font:800 14px/1.3 'Archivo'; letter-spacing:.02em; text-transform:uppercase; color:var(--ink); margin-bottom:5px;}
+  .pillars span{font-size:15.5px; color:var(--ink-soft); line-height:1.55;}
+
+  .days{margin:24px 0 0; border-top:1px solid var(--rule);}
+  .day{display:grid; grid-template-columns:74px 1fr; gap:16px; padding:16px 0; border-bottom:1px solid var(--rule);}
+  .day .d{font:800 12px/1.35 'Archivo'; letter-spacing:.06em; text-transform:uppercase; color:var(--accent); padding-top:3px;}
+  .day .b b{display:block; font-family:'Fraunces',serif; font-weight:900; font-size:18px; letter-spacing:-.01em; margin-bottom:3px;}
+  .day .b span{font-size:15.5px; color:var(--ink-soft); line-height:1.55;}
+
+  table.cost{width:100%; border-collapse:collapse; margin:18px 0 14px; font-variant-numeric:tabular-nums;}
+  table.cost th, table.cost td{text-align:left; padding:11px 12px; border-bottom:1px solid var(--rule);}
+  table.cost th{font:800 12px/1.3 'Archivo'; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-soft);}
+  table.cost td:last-child, table.cost th:last-child{text-align:right; font-weight:700;}
+
+  .cols{display:grid; grid-template-columns:1fr 1fr; gap:22px; margin:20px 0 0;}
+  .cols h3{font-size:16px; margin:0 0 8px; font-family:'Archivo'; font-weight:800; letter-spacing:.02em; text-transform:uppercase;}
+  .cols ul{margin:0; padding-left:18px;} .cols li{font-size:15px; color:var(--ink-soft); margin-bottom:6px; line-height:1.5;}
+
+  .note{background:var(--card); border:1px solid var(--rule); border-left:3px solid var(--accent); border-radius:10px; padding:16px 18px; font-size:15.5px; color:var(--ink-soft);}
+  .note strong{color:var(--ink);}
+
+  details{border-bottom:1px solid var(--rule); padding:14px 0;}
+  details summary{font:700 17px/1.4 'Archivo'; cursor:pointer; list-style:none; display:flex; justify-content:space-between; gap:14px;}
+  details summary::-webkit-details-marker{display:none;}
+  details summary::after{content:"+"; color:var(--accent); font-weight:800; font-size:20px; line-height:1;}
+  details[open] summary::after{content:"–";}
+  details p{margin:12px 0 2px; font-size:15.5px; color:var(--ink-soft);}
+
+  .signup{background:var(--deep); color:#fbf7f1; border:0;}
+  .signup h2{color:#fff;}
+  .signup .kicker{color:#7ec7ea;}
+  .signup p{color:#d9d0c4;}
+  .formbox{background:#fff; border-radius:16px; overflow:hidden; margin:22px 0 0; box-shadow:0 24px 60px -24px rgba(0,0,0,.5);}
+  .formbox iframe{width:100%; height:1620px; border:0; display:block;}
+  .chat{display:flex; align-items:center; gap:14px; flex-wrap:wrap; margin:20px 0 0; padding:18px 20px; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.16); border-radius:12px;}
+  .chat p{margin:0; font-size:15.5px; color:#d9d0c4;}
+
+  footer{padding:40px 0 60px; font-size:14px; color:var(--ink-soft); text-align:center;}
+  footer a{color:var(--ink-soft);}
+
+  @media (max-width:560px){
+    .cols{grid-template-columns:1fr;}
+    .day{grid-template-columns:60px 1fr; gap:12px;}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <img src="hero.jpg" alt="The city of Riobamba beneath the snow-capped Volcan Chimborazo, Ecuador">
+  <div class="wrap">
+    <p class="eyebrow">MEDLIFE Sault College &middot; Service Learning Trip</p>
+    <h1>Riobamba,<br><em>Ecuador.</em></h1>
+    <p class="dates">May 22 &ndash; 30, 2027</p>
+    <p class="lede">Nine days in the Andes where MEDLIFE began. Run a mobile clinic, help build a community project &amp; come home with 40+ service hours.</p>
+    <a class="btn" href="#list">Get on the list</a>
+  </div>
+</header>
+
+<main>
+
+<section class="wrap">
+  <p class="kicker">What this trip is</p>
+  <h2>Service where the Movement started</h2>
+  <p>Riobamba, high in Ecuador's Andes, is surrounded by Indigenous farming communities facing malnutrition, limited healthcare access, and no sanitation infrastructure. It's still one of the poorest provinces in Ecuador, and it's the community MEDLIFE was built around.</p>
+  <p>Over the week you rotate through three kinds of work:</p>
+  <ul class="pillars">
+    <li><b>Mobile Clinic</b><span>Shadow healthcare professionals across Triage, Education, General Medicine, OB-GYN, Pharmacy, and Dental &amp; Tooth-Brushing stations.</span></li>
+    <li><b>Development Project</b><span>Build something the community asked for: staircases, parks, roads, retention walls, school renovations, a well or water reservoir.</span></li>
+    <li><b>Reality Tour</b><span>Learn the historical and economic factors behind what families here face, so the service actually makes sense.</span></li>
+    <li><b>40+ service hours</b><span>Documented hours for your program, your resume, and med-school or professional applications.</span></li>
+  </ul>
+</section>
+
+<section class="wrap">
+  <p class="kicker">Itinerary</p>
+  <h2>Day by day</h2>
+  <div class="days">
+    <div class="day"><div class="d">Day 1<br>Sat</div><div class="b"><b>Arrival to Quito</b><span>Land at Mariscal Sucre International (UIO) between 5 and 11pm. MEDLIFE meets you at Arrivals and transfers you to the Quito hostel.</span></div></div>
+    <div class="day"><div class="d">Day 2<br>Sun</div><div class="b"><b>Transfer to Riobamba</b><span>A four-hour bus through the Andes. Free time in the main square, then evening orientation and safety briefing.</span></div></div>
+    <div class="day"><div class="d">Day 3<br>Mon</div><div class="b"><b>Reality Tour</b><span>Iglesia de Balbanera, Hacienda Totorillas, a community hospital in Cebadas, and the Cebadenita cheese factory.</span></div></div>
+    <div class="day"><div class="d">Day 4&ndash;6<br>Tue&ndash;Thu</div><div class="b"><b>Mobile Clinics &amp; Project</b><span>Rotate through the clinic stations and the Development Project. This is the core of the week.</span></div></div>
+    <div class="day"><div class="d">Day 7<br>Fri</div><div class="b"><b>Last Clinic &amp; Inauguration</b><span>A final half-day of clinic or project work, then celebrate the finished Development Project with the community.</span></div></div>
+    <div class="day"><div class="d">Day 8<br>Sat</div><div class="b"><b>Optional: Banos day trip</b><span>Most volunteers add this: waterfalls, extreme sports, local tradition. Self-funded and optional.</span></div></div>
+    <div class="day"><div class="d">Day 9<br>Sun</div><div class="b"><b>Departure</b><span>Depart Quito any time from 10pm Saturday through 12pm Sunday.</span></div></div>
+  </div>
+</section>
+
+<section class="wrap">
+  <p class="kicker">Cost</p>
+  <h2>What it costs &amp; when to decide</h2>
+  <p>Price per person depends on how many people from the chapter go. More people, lower price for everyone.</p>
+  <table class="cost">
+    <tr><th>Chapter group size</th><th>Price (Ecuador)</th></tr>
+    <tr><td>Under 5</td><td>$1,983</td></tr>
+    <tr><td>6 &ndash; 17</td><td>$1,933</td></tr>
+    <tr><td>18 &ndash; 40</td><td>$1,883</td></tr>
+    <tr><td>41+</td><td>$1,833</td></tr>
+  </table>
+  <p class="note"><strong>A $200 deposit holds your spot</strong> and is credited toward your trip cost (the deposit itself is non-refundable). <strong>Deposit deadline: February 14, 2027.</strong> That's the final cutoff to join this trip.</p>
+  <div class="cols">
+    <div>
+      <h3>Included</h3>
+      <ul>
+        <li>7 nights dorm accommodation</li>
+        <li>Breakfast, lunch &amp; dinner, Monday to Friday</li>
+        <li>Airport transfers &amp; transport to every activity</li>
+        <li>English-speaking Trip Leader</li>
+        <li>Safety equipment, including face masks</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Not included</h3>
+      <ul>
+        <li>Flights</li>
+        <li>Tips</li>
+        <li>Pre- or post-trip accommodation</li>
+        <li>Optional excursions (e.g. Banos)</li>
+        <li>Weekend meals</li>
+      </ul>
+    </div>
+  </div>
+  <p style="margin-top:22px;"><strong>Discounts stack.</strong> Early Bird before the deadline ($100), filling out this form ($50, once a year), active e-board officer ($50), returning traveler after your first SLT ($150). Ask your chapter president which ones are already on your account.</p>
+</section>
+
+<section class="wrap">
+  <p class="kicker">Before you go</p>
+  <h2>Travel &amp; packing</h2>
+  <div class="cols">
+    <div>
+      <h3>Documents</h3>
+      <ul>
+        <li>Valid passport, good for 6+ months past your return date (7 recommended)</li>
+        <li>No required vaccinations; follow CDC guidance and your own doctor</li>
+        <li>Not a US or Canadian citizen? Check your own visa requirements</li>
+        <li>Carry a copy of your passport, packed separately from the original</li>
+      </ul>
+    </div>
+    <div>
+      <h3>Pack</h3>
+      <ul>
+        <li>Closed-toe shoes for clinic and project days</li>
+        <li>Layers. Riobamba sits around 9,000 ft, so mornings and evenings run cool</li>
+        <li>Modest, weather-ready clothing for community visits</li>
+        <li>Reusable water bottle, sunscreen, personal meds</li>
+        <li>Small-bill USD cash (Ecuador uses the US dollar)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="wrap">
+  <p class="kicker">Questions</p>
+  <h2>FAQ</h2>
+  <details><summary>Do I need medical experience?</summary><p>No. You shadow and assist licensed healthcare professionals at the clinic stations. It's open to any Sault College student, most often nursing, but not only nursing.</p></details>
+  <details><summary>How do I pay for it?</summary><p>A $200 deposit holds your spot, then the balance is due before the trip. Discounts stack and can knock several hundred dollars off. The chapter also runs fundraisers through the year, and those are easier when you're in the group chat early.</p></details>
+  <details><summary>Is it safe?</summary><p>MEDLIFE runs these trips year-round with local staff, an English-speaking Trip Leader with the group the whole time, airport transfers, and safety equipment provided. Bring questions to the info session.</p></details>
+  <details><summary>What if I'm not sure yet?</summary><p>That's what the list is for. Get on it, come to the info session, meet people who are going, and decide before the February deadline. No payment happens on this page.</p></details>
+  <details><summary>Can I bring a friend who isn't at Sault College?</summary><p>Ask. Put it in the form's last question and the trip director will follow up.</p></details>
+</section>
+
+<section class="signup" id="list">
+  <div class="wrap">
+    <p class="kicker">Next step</p>
+    <h2>Get on the list</h2>
+    <p>Add your info and we'll send you the full details, invite you to the info session, and add you to the group chat. This is not a commitment and there's no payment here.</p>
+    <div class="formbox">
+      <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdAl2fJA1p83j5WYfuLs2_aboURzJ6Y87F917b31q7X0X4lxg/viewform?embedded=true" title="Riobamba SLT 2027 interest form" loading="lazy">Loading the form&hellip;</iframe>
+    </div>
+    <div class="chat">
+      <a class="btn" href="https://chat.whatsapp.com/J0CsTmjTFwP7WdxEUJTpfh">Join the group chat</a>
+      <p>Trip updates, fundraiser events, countdowns, and everyone else who's going. Join after you've filled the form.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    MEDLIFE Sault College Chapter<br>
+    <a href="https://instagram.com/saultmedlife">@saultmedlife</a> &nbsp;&middot;&nbsp; <a href="mailto:saultcollegemedlife@gmail.com">saultcollegemedlife@gmail.com</a><br>
+    <span style="opacity:.7;">MEDLIFE HQ &middot; 1-844-633-5433 &middot; info@medlifemovement.org</span>
+  </div>
+</footer>
+
+</body>
+</html>
