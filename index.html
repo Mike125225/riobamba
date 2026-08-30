@@ -93,11 +93,13 @@
 
   /* sign-up */
   .signup{position:relative; color:#fbf7f1; border:0; overflow:hidden; background:var(--deep);}
-  .signup img.bg{position:absolute; top:0; left:0; width:100%; height:720px; object-fit:cover; object-position:center 18%;}
-  .signup::before{content:""; position:absolute; inset:0; background:
-    linear-gradient(180deg, rgba(9,25,31,.86) 0%, rgba(9,25,31,.80) 26%, rgba(9,25,31,.90) 46%, rgba(9,25,31,.97) 62%, var(--deep) 80%);}
-  .signup > .wrap{position:relative; z-index:1;}
-  .bg-cap{position:absolute; top:14px; right:16px; z-index:1; font:700 10.5px/1.2 'Archivo'; letter-spacing:.09em; text-transform:uppercase; color:#eef4f7; background:rgba(9,25,31,.55); border:1px solid rgba(255,255,255,.18); padding:5px 9px; border-radius:5px;}
+  .signup .bgstack{position:absolute; top:0; left:0; right:0; z-index:0; display:flex; flex-direction:column; height:720px;}
+  .signup .bgstack img{width:100%; flex:1 1 0; min-height:0; object-fit:cover; object-position:center 30%; display:block;}
+  .signup .bgstack img:first-child{object-position:center 18%;}
+  .signup::before{content:""; position:absolute; inset:0; z-index:1; background:
+    linear-gradient(180deg, rgba(9,25,31,.85) 0%, rgba(9,25,31,.62) 19%, rgba(9,25,31,.42) 40%, rgba(9,25,31,.42) 73%, rgba(9,25,31,.80) 91%, var(--deep) 100%);}
+  .signup > .wrap{position:relative; z-index:2;}
+  .bg-cap{position:absolute; top:14px; right:16px; z-index:2; font:700 10.5px/1.2 'Archivo'; letter-spacing:.09em; text-transform:uppercase; color:#eef4f7; background:rgba(9,25,31,.55); border:1px solid rgba(255,255,255,.18); padding:5px 9px; border-radius:5px;}
   .signup h2{color:#fff; text-shadow:0 2px 18px rgba(0,0,0,.5);}
   .signup .kicker{color:#a8dcf5; text-shadow:0 1px 10px rgba(0,0,0,.5);}
   .signup > .wrap > p{color:#e9e1d5; text-shadow:0 1px 10px rgba(0,0,0,.55);}
@@ -184,6 +186,17 @@
     <img src="gallery/g10.jpg" alt="The pharmacy station at a MEDLIFE mobile clinic" loading="lazy">
     <img src="gallery/g11.jpg" alt="A community gathering with MEDLIFE volunteers in Riobamba" loading="lazy">
     <img src="gallery/g12.jpg" alt="A full MEDLIFE mobile clinic set up under a tent" loading="lazy">
+    <img src="gallery/g13.jpg" alt="A MEDLIFE mobile clinic tent on a hillside above Lima, Peru" loading="lazy">
+    <img src="gallery/g14.jpg" alt="A Sault College volunteer carrying a bucket of concrete on the MEDLIFE development project" loading="lazy">
+    <img src="gallery/g15.jpg" alt="MEDLIFE volunteers and community members gathered together in Lima, Peru" loading="lazy">
+    <img src="gallery/g16.jpg" alt="Volunteers running the dental and fluoride station for children at a mobile clinic" loading="lazy">
+    <img src="gallery/g17.jpg" alt="MEDLIFE volunteers stocking the mobile pharmacy table" loading="lazy">
+    <img src="gallery/g18.jpg" alt="Nursing students practising a head-to-toe assessment on a manikin at the clinic" loading="lazy">
+    <img src="gallery/g19.jpg" alt="A volunteer taking a community member's blood pressure at the mobile clinic" loading="lazy">
+    <img src="gallery/g20.jpg" alt="Volunteers assisting a patient on the assessment cot at a MEDLIFE mobile clinic" loading="lazy">
+    <img src="gallery/g21.jpg" alt="The Sault College team with local children outside the mobile clinic in Lima" loading="lazy">
+    <img src="gallery/g22.jpg" alt="A volunteer giving a young child a fluoride treatment at the dental station" loading="lazy">
+    <img src="gallery/g23.jpg" alt="Volunteers at the mobile pharmacy handing out medication in Lima, Peru" loading="lazy">
   </div>
   <p class="credit">From MEDLIFE's May 2026 Service Learning Trip to Lima, Peru, and its Riobamba, Ecuador archive.</p>
 </section>
@@ -264,7 +277,12 @@
 </section>
 
 <section class="signup" id="list">
-  <img class="bg" src="signup-bg.jpg" alt="The MEDLIFE Sault College volunteer team on a rooftop above Lima, Peru during the 2026 Service Learning Trip">
+  <div class="bgstack" aria-hidden="true">
+    <img src="signup-bg.jpg" alt="">
+    <img src="signup/c4.jpg" alt="" loading="lazy">
+    <img src="signup/c3.jpg" alt="" loading="lazy">
+    <img src="signup/c2.jpg" alt="" loading="lazy">
+  </div>
   <span class="bg-cap">MEDLIFE SLT &middot; Lima, Peru &middot; May 2026</span>
   <div class="wrap">
     <h2>Get on the list</h2>
@@ -440,6 +458,26 @@
       animate();
       if(scale>1.01) zoomTo(1, e.clientX, e.clientY); else zoomTo(fillScale(), e.clientX, e.clientY);
     });
+  })();
+</script>
+
+<script>
+  // Size the sign-up photo column so the last photo bottoms out exactly where the form ends.
+  (function(){
+    var sec=document.querySelector('.signup'),
+        stack=document.querySelector('.signup .bgstack'),
+        fb=document.querySelector('.signup .formbox');
+    if(!sec||!stack||!fb) return;
+    function size(){
+      var h=fb.getBoundingClientRect().bottom - sec.getBoundingClientRect().top;
+      if(h>240) stack.style.height=Math.round(h)+'px';
+    }
+    size();
+    addEventListener('resize', size);
+    addEventListener('load', function(){ size(); setTimeout(size,400); });
+    if('ResizeObserver' in window) new ResizeObserver(size).observe(fb);
+    var ifr=fb.querySelector('iframe');
+    if(ifr) ifr.addEventListener('load', function(){ size(); setTimeout(size,300); });
   })();
 </script>
 
