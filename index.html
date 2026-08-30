@@ -59,8 +59,9 @@
   .gallery img{width:100%; aspect-ratio:4/3; object-fit:cover; border-radius:6px; display:block; background:var(--rule); cursor:zoom-in;}
   .lightbox{position:fixed; inset:0; z-index:1000; display:none; align-items:center; justify-content:center; background:rgba(0,0,0,.92); touch-action:none;}
   .lightbox.open{display:flex;}
-  .lightbox img{max-width:100%; max-height:100%; object-fit:contain; transform-origin:center center; transition:transform .15s ease; will-change:transform; -webkit-user-select:none; user-select:none;}
-  .lightbox img.zoomed{transition:none; cursor:grab;}
+  .lightbox img{max-width:100%; max-height:100%; object-fit:contain; transform-origin:center center; will-change:transform; -webkit-user-select:none; user-select:none; -webkit-touch-callout:none;}
+  .lightbox img.animating{transition:transform .18s ease-out;}
+  .lightbox img.zoomed{cursor:grab;}
   .lightbox .lb-close{position:absolute; top:14px; right:18px; font-size:34px; line-height:1; color:#fff; background:none; border:0; cursor:pointer; padding:6px;}
   .lightbox .lb-hint{position:absolute; bottom:16px; left:0; right:0; text-align:center; color:rgba(255,255,255,.7); font-size:13px; pointer-events:none;}
   .credit{margin:14px 0 0; font-size:13px; color:var(--ink-soft);}
@@ -322,7 +323,7 @@
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
   <button class="lb-close" id="lbClose" aria-label="Close">&times;</button>
   <img id="lbImg" alt="">
-  <div class="lb-hint" id="lbHint">Pinch or double-tap to zoom &middot; drag to pan</div>
+  <div class="lb-hint" id="lbHint">Tap the photo to zoom in &middot; drag to look around</div>
 </div>
 <script>
   (function(){
@@ -332,47 +333,73 @@
         gallery=document.querySelector('.gallery');
     if(!box||!gallery) return;
 
-    var scale=1, tx=0, ty=0, min=1, max=4;
-    var pointers={}, startDist=0, startScale=1, panStart=null;
+    // base = the contain-fit size of the photo at scale 1 (centred in the viewport)
+    var scale=1, tx=0, ty=0, min=1, max=6, base={w:0,h:0};
+    var pointers={}, startDist=0, startScale=1, startTx=0, startTy=0, startMid=null;
+    var downPt=null, moved=false;
 
     function apply(){
       img.style.transform='translate('+tx+'px,'+ty+'px) scale('+scale+')';
       img.classList.toggle('zoomed', scale>1.01);
     }
-    function reset(){ scale=1; tx=0; ty=0; apply(); }
+    function measure(){
+      var pw=box.clientWidth, ph=box.clientHeight, nw=img.naturalWidth||4, nh=img.naturalHeight||3;
+      var r=Math.min(pw/nw, ph/nh);
+      base.w=nw*r; base.h=nh*r;
+    }
+    // scale needed for the photo to cover the whole screen
+    function fillScale(){
+      return Math.min(max, Math.max(box.clientWidth/base.w, box.clientHeight/base.h) * 1.02);
+    }
     function clamp(){
-      var r=img.getBoundingClientRect(), pw=box.clientWidth, ph=box.clientHeight;
-      var mx=Math.max(0,(r.width-pw)/2), my=Math.max(0,(r.height-ph)/2);
+      var w=base.w*scale, h=base.h*scale, pw=box.clientWidth, ph=box.clientHeight;
+      var mx=Math.max(0,(w-pw)/2), my=Math.max(0,(h-ph)/2);
       tx=Math.min(mx,Math.max(-mx,tx)); ty=Math.min(my,Math.max(-my,ty));
     }
-    function open(src,alt){
-      img.src=src; img.alt=alt||''; reset();
-      box.classList.add('open'); document.body.style.overflow='hidden';
-      hint.style.opacity='1'; setTimeout(function(){hint.style.transition='opacity .6s'; hint.style.opacity='0';},1800);
+    // zoom to targetScale keeping the point (px,py) on screen under the finger
+    function zoomTo(targetScale, px, py){
+      var cx=box.clientWidth/2, cy=box.clientHeight/2;
+      var k=targetScale/scale;
+      tx = px - cx - (px - cx - tx)*k;
+      ty = py - cy - (py - cy - ty)*k;
+      scale = targetScale;
+      if(scale<=1.01){ scale=1; tx=0; ty=0; }
+      clamp(); apply();
     }
-    function close(){ box.classList.remove('open'); document.body.style.overflow=''; img.src=''; }
+    function reset(){ scale=1; tx=0; ty=0; apply(); }
+    var animT;
+    function animate(){ img.classList.add('animating'); clearTimeout(animT); animT=setTimeout(function(){ img.classList.remove('animating'); }, 240); }
+
+    function open(src,alt){
+      box.classList.add('open'); document.body.style.overflow='hidden';
+      img.onload=function(){ measure(); reset(); };
+      img.src=src; img.alt=alt||'';
+      if(img.complete && img.naturalWidth){ measure(); reset(); }
+      hint.style.opacity='1';
+      setTimeout(function(){ hint.style.transition='opacity .6s'; hint.style.opacity='0'; }, 2200);
+    }
+    function close(){ box.classList.remove('open'); document.body.style.overflow=''; img.onload=null; img.src=''; }
 
     gallery.addEventListener('click', function(e){
-      var t=e.target;
-      if(t.tagName==='IMG') open(t.getAttribute('src'), t.getAttribute('alt'));
+      if(e.target.tagName==='IMG') open(e.target.getAttribute('src'), e.target.getAttribute('alt'));
     });
     document.getElementById('lbClose').addEventListener('click', close);
     box.addEventListener('click', function(e){ if(e.target===box) close(); });
     document.addEventListener('keydown', function(e){ if(e.key==='Escape' && box.classList.contains('open')) close(); });
+    window.addEventListener('resize', function(){ if(box.classList.contains('open')){ measure(); clamp(); apply(); } });
 
-    var lastTap=0;
     img.addEventListener('pointerdown', function(e){
       pointers[e.pointerId]={x:e.clientX,y:e.clientY};
       img.setPointerCapture(e.pointerId);
       var ids=Object.keys(pointers);
-      if(ids.length===2){
+      if(ids.length===1){
+        downPt={x:e.clientX,y:e.clientY,t:Date.now()}; moved=false;
+        startTx=tx; startTy=ty;
+      } else if(ids.length===2){
         var a=pointers[ids[0]], b=pointers[ids[1]];
         startDist=Math.hypot(a.x-b.x,a.y-b.y); startScale=scale;
-      } else if(ids.length===1){
-        panStart={x:e.clientX-tx, y:e.clientY-ty};
-        var now=Date.now();
-        if(now-lastTap<300){ scale=scale>1.01?1:2.5; if(scale===1){tx=0;ty=0;} clamp(); apply(); }
-        lastTap=now;
+        startTx=tx; startTy=ty;
+        startMid={x:(a.x+b.x)/2, y:(a.y+b.y)/2};
       }
     });
     img.addEventListener('pointermove', function(e){
@@ -382,23 +409,37 @@
       if(ids.length===2){
         var a=pointers[ids[0]], b=pointers[ids[1]];
         var d=Math.hypot(a.x-b.x,a.y-b.y);
-        scale=Math.min(max,Math.max(min,startScale*(d/startDist)));
-        clamp(); apply();
-      } else if(ids.length===1 && panStart && scale>1.01){
-        tx=e.clientX-panStart.x; ty=e.clientY-panStart.y;
-        clamp(); apply();
+        var target=Math.min(max,Math.max(min,startScale*(d/startDist)));
+        scale=startScale; tx=startTx; ty=startTy;
+        zoomTo(target, startMid.x, startMid.y);
+        moved=true;
+      } else if(ids.length===1 && downPt){
+        var dx=e.clientX-downPt.x, dy=e.clientY-downPt.y;
+        if(Math.abs(dx)>6 || Math.abs(dy)>6) moved=true;
+        if(scale>1.01){ tx=startTx+dx; ty=startTy+dy; clamp(); apply(); }
       }
     });
-    function up(e){ delete pointers[e.pointerId]; panStart=null; if(scale<=1.01) reset(); }
+    function up(e){
+      var wasSingle=Object.keys(pointers).length===1;
+      delete pointers[e.pointerId];
+      if(wasSingle && downPt && !moved && Date.now()-downPt.t<400){
+        // a tap: zoom in to fill at the tapped point, or back out if already zoomed
+        animate();
+        if(scale>1.01) zoomTo(1, downPt.x, downPt.y);
+        else zoomTo(fillScale(), downPt.x, downPt.y);
+      }
+      if(Object.keys(pointers).length===0){ downPt=null; if(scale<=1.01) reset(); }
+    }
     img.addEventListener('pointerup', up);
     img.addEventListener('pointercancel', up);
     img.addEventListener('wheel', function(e){
       e.preventDefault();
-      scale=Math.min(max,Math.max(min, scale - e.deltaY*0.002));
-      if(scale<=1.01){tx=0;ty=0;}
-      clamp(); apply();
+      zoomTo(Math.min(max,Math.max(min, scale*(e.deltaY<0?1.15:0.87))), e.clientX, e.clientY);
     }, {passive:false});
-    img.addEventListener('dblclick', function(){ scale=scale>1.01?1:2.5; tx=0; ty=0; apply(); });
+    img.addEventListener('dblclick', function(e){
+      animate();
+      if(scale>1.01) zoomTo(1, e.clientX, e.clientY); else zoomTo(fillScale(), e.clientX, e.clientY);
+    });
   })();
 </script>
 
