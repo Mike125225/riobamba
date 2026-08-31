@@ -65,6 +65,9 @@
   .lightbox .lb-close{position:absolute; top:14px; right:18px; font-size:34px; line-height:1; color:#fff; background:none; border:0; cursor:pointer; padding:6px;}
   .lightbox .lb-hint{position:absolute; bottom:16px; left:0; right:0; text-align:center; color:rgba(255,255,255,.7); font-size:13px; pointer-events:none;}
   .credit{margin:14px 0 0; font-size:13px; color:var(--ink-soft);}
+  .galcap{font-family:'Fraunces',Georgia,serif; font-weight:900; font-size:20px; letter-spacing:-.01em; margin:38px 0 2px;}
+  .galcap.first{margin-top:24px;}
+  .galcap + .credit{margin-top:4px;}
 
   .pillars{list-style:none; padding:0; margin:24px 0 0; display:grid; gap:2px; background:var(--rule); border:1px solid var(--rule); border-radius:14px; overflow:hidden;}
   .pillars li{background:var(--card); padding:18px 20px;}
@@ -93,9 +96,10 @@
 
   /* sign-up */
   .signup{position:relative; color:#fbf7f1; border:0; overflow:hidden; background:var(--deep);}
-  .signup .bgstack{position:absolute; top:0; left:0; right:0; z-index:0; display:flex; flex-direction:column; height:720px;}
-  .signup .bgstack img{width:100%; flex:1 1 0; min-height:0; object-fit:cover; object-position:center 30%; display:block;}
-  .signup .bgstack img:first-child{object-position:center 18%;}
+  .signup .bgstack{position:absolute; top:0; left:0; right:0; z-index:0; display:flex; flex-direction:column; height:720px; overflow:hidden;}
+  .signup .bghero{width:100%; height:auto; flex:0 0 auto; display:block;}
+  .signup .bgcollage{flex:1 1 auto; min-height:0; display:grid; grid-template-columns:1fr 1fr; grid-auto-rows:1fr; gap:3px;}
+  .signup .bgcollage img{width:100%; height:100%; min-height:0; object-fit:cover; object-position:center 30%; display:block;}
   .signup::before{content:""; position:absolute; inset:0; z-index:1; background:
     linear-gradient(180deg, rgba(9,25,31,.85) 0%, rgba(9,25,31,.62) 19%, rgba(9,25,31,.42) 40%, rgba(9,25,31,.42) 73%, rgba(9,25,31,.80) 91%, var(--deep) 100%);}
   .signup > .wrap{position:relative; z-index:2;}
@@ -161,31 +165,28 @@
 <section class="wrap">
   <h2>Service where the Movement started</h2>
   <p>Riobamba, high in Ecuador's Andes, is surrounded by Indigenous farming communities facing malnutrition, limited healthcare access, and no sanitation infrastructure. It's still one of the poorest provinces in Ecuador, and it's the community MEDLIFE was built around.</p>
-  <p>Over the week you rotate through three kinds of work:</p>
+  <p>Over the week you rotate through three kinds of work, in this order:</p>
   <ul class="pillars">
+    <li><b>Reality Tour</b><span>First. Learn the historical and economic factors behind what families here face, so the rest of the week actually makes sense.</span></li>
     <li><b>Mobile Clinic</b><span>Shadow healthcare professionals across Triage, Education, General Medicine, OB-GYN, Pharmacy, and Dental and Tooth-Brushing stations.</span></li>
     <li><b>Development Project</b><span>Build something the community asked for: staircases, parks, roads, retention walls, school renovations, a well or water reservoir.</span></li>
-    <li><b>Reality Tour</b><span>Learn the historical and economic factors behind what families here face, so the service actually makes sense.</span></li>
-    <li><b>40+ service hours</b><span>Documented hours for your program, your resume, and med-school or professional applications.</span></li>
   </ul>
+  <p style="margin-top:16px;"><strong>You finish the week with 40+ documented service hours</strong> for your program, your resume, and med-school or professional applications.</p>
 </section>
 
 <section class="wrap">
   <h2>What it actually looks like</h2>
-  <p>Mobile clinics, community builds, and life in the Andes, from a recent MEDLIFE Service Learning Trip to Lima, Peru, plus photos from Riobamba, Ecuador.</p>
+  <p>Riobamba 2027 runs the same way it always has: Reality Tour, mobile clinics, a community build, and life in the Andes.</p>
+
+  <h3 class="galcap first">Our SLT &mdash; Lima, Peru, May 23&ndash;31, 2026</h3>
+  <p class="credit">The trip our chapter went on. Same MEDLIFE program, a different corner of the Andes.</p>
   <div class="gallery">
-    <img src="gallery/g01.jpg" alt="The Ecuadorian Andes above Riobamba" loading="lazy">
-    <img src="gallery/g02.jpg" alt="MEDLIFE volunteers running a mobile clinic consultation" loading="lazy">
-    <img src="gallery/g03.jpg" alt="Indigenous women threshing wheat on an Andean hillside near Riobamba" loading="lazy">
-    <img src="gallery/g04.jpg" alt="Volunteers at the dental station of a MEDLIFE mobile clinic" loading="lazy">
-    <img src="gallery/g05.jpg" alt="MEDLIFE volunteers greeting community members in Riobamba" loading="lazy">
-    <img src="gallery/g06.jpg" alt="A volunteer mixing concrete on a MEDLIFE development project" loading="lazy">
-    <img src="gallery/g07.jpg" alt="Volcan Chimborazo above the city of Riobamba" loading="lazy">
-    <img src="gallery/g08.jpg" alt="Volunteers taking patient histories at a mobile clinic" loading="lazy">
-    <img src="gallery/g09.jpg" alt="Community members in Riobamba, Ecuador" loading="lazy">
-    <img src="gallery/g10.jpg" alt="The pharmacy station at a MEDLIFE mobile clinic" loading="lazy">
-    <img src="gallery/g11.jpg" alt="A community gathering with MEDLIFE volunteers in Riobamba" loading="lazy">
-    <img src="gallery/g12.jpg" alt="A full MEDLIFE mobile clinic set up under a tent" loading="lazy">
+    <img src="gallery/g02.jpg" alt="A MEDLIFE mobile clinic consultation on a hillside above Lima, Peru" loading="lazy">
+    <img src="gallery/g04.jpg" alt="Volunteers at the dental station of a MEDLIFE mobile clinic in Lima" loading="lazy">
+    <img src="gallery/g06.jpg" alt="A Sault College volunteer mixing concrete on the MEDLIFE development project" loading="lazy">
+    <img src="gallery/g08.jpg" alt="A volunteer taking a community member's blood pressure at the mobile clinic" loading="lazy">
+    <img src="gallery/g10.jpg" alt="Three Sault College volunteers at the mobile clinic hydration station in Lima" loading="lazy">
+    <img src="gallery/g12.jpg" alt="A full MEDLIFE mobile clinic set up under a tent in Lima" loading="lazy">
     <img src="gallery/g13.jpg" alt="A MEDLIFE mobile clinic tent on a hillside above Lima, Peru" loading="lazy">
     <img src="gallery/g14.jpg" alt="A Sault College volunteer carrying a bucket of concrete on the MEDLIFE development project" loading="lazy">
     <img src="gallery/g15.jpg" alt="MEDLIFE volunteers and community members gathered together in Lima, Peru" loading="lazy">
@@ -212,7 +213,17 @@
     <img src="gallery/g36.jpg" alt="The Sault College group with their MEDLIFE trip leader and his family in Lima" loading="lazy">
     <img src="gallery/g37.jpg" alt="A volunteer holding a yoga tree pose on top of a dune buggy near Huacachina" loading="lazy">
   </div>
-  <p class="credit">From MEDLIFE's May 2026 Service Learning Trip to Lima, Peru, and its Riobamba, Ecuador archive.</p>
+
+  <h3 class="galcap">Riobamba, Ecuador</h3>
+  <p class="credit">From MEDLIFE's Riobamba archive &mdash; where the trip you'd be joining takes place.</p>
+  <div class="gallery">
+    <img src="gallery/g01.jpg" alt="The Ecuadorian Andes above Riobamba" loading="lazy">
+    <img src="gallery/g03.jpg" alt="Indigenous women threshing wheat on an Andean hillside near Riobamba" loading="lazy">
+    <img src="gallery/g05.jpg" alt="Community members on a hillside near Riobamba, Ecuador" loading="lazy">
+    <img src="gallery/g07.jpg" alt="Volcan Chimborazo above the city of Riobamba" loading="lazy">
+    <img src="gallery/g09.jpg" alt="MEDLIFE volunteers greeting community members in Riobamba" loading="lazy">
+    <img src="gallery/g11.jpg" alt="A community gathering with MEDLIFE volunteers in Riobamba" loading="lazy">
+  </div>
 </section>
 
 <section class="wrap">
@@ -254,6 +265,7 @@
     </div>
   </div>
   <p style="margin-top:22px;"><strong>Discounts stack.</strong> Early Bird before the deadline ($100), filling out the interest form ($50, once a year), active e-board officer ($50), returning traveler after your first SLT ($150). Ask your chapter president which ones are already on your account.</p>
+  <p style="margin-top:14px;"><strong>The MVP discount:</strong> recruit 10 people who register for the trip and your full trip cost is covered. You still take care of the not-included items yourself, like flights and tips, but the trip itself is free.</p>
 </section>
 
 <section class="wrap">
@@ -283,19 +295,24 @@
 
 <section class="wrap">
   <h2>FAQ</h2>
-  <details><summary>Do I need medical experience?</summary><p>No. You shadow and assist licensed healthcare professionals at the clinic stations. It's open to any Sault College student, most often nursing, but not only nursing.</p></details>
-  <details><summary>How do I pay for it?</summary><p>A $200 deposit holds your spot, then the balance is due before the trip. Discounts stack and can knock several hundred dollars off. The chapter also runs fundraisers through the year, and those are easier when you're in the group chat early.</p></details>
-  <details><summary>Is it safe?</summary><p>MEDLIFE runs these trips year-round with local staff, an English-speaking Trip Leader with the group the whole time, airport transfers, and safety equipment provided. Bring questions to the info session.</p></details>
-  <details><summary>What if I'm not sure yet?</summary><p>That's what the list is for. Get on it, come to the info session, meet people who are going, and decide before the February deadline. No payment happens on this page.</p></details>
-  <details><summary>Can I bring a friend who isn't at Sault College?</summary><p>Ask. Put it in the form's last question and the trip director will follow up.</p></details>
+  <details><summary>Do I need medical experience?</summary><p>No. You shadow and assist licensed healthcare professionals at the clinic stations. It's open to anyone who's willing to lend a helping hand.</p></details>
+  <details><summary>How do I pay for it?</summary><p>A $200 deposit holds your spot, then the balance is due before the trip. Discounts stack and can knock several hundred dollars off. The chapter also runs fundraisers through the year, with a group of volunteers dedicated to organizing them.</p></details>
+  <details><summary>Is it safe?</summary><p>MEDLIFE runs these trips year-round with local staff, an English-speaking Trip Leader with the group the whole time, airport transfers, and safety equipment provided. A security guard travels with the group and accompanies you to the mobile clinics and the development project. Bring questions to the info session.</p></details>
+  <details><summary>What if I'm not sure yet?</summary><p>You don't need to commit to the trip to fill out this list. If you're open to the idea and want to learn more before you decide, that's the next move. Get on the list, come to the info session, meet people who are going, and decide before the February deadline. No payment happens on this page.</p></details>
+  <details><summary>Can I bring a friend who isn't at Sault College?</summary><p>Yes, absolutely anyone is welcome on the trip. Put your friend's name in the form's last question and the trip director will follow up.</p></details>
 </section>
 
 <section class="signup" id="list">
   <div class="bgstack" aria-hidden="true">
-    <img src="signup-bg.jpg" alt="">
-    <img src="signup/c2.jpg" alt="" loading="lazy">
-    <img src="signup/c3.jpg" alt="" loading="lazy">
-    <img src="signup/c4.jpg" alt="" loading="lazy">
+    <img class="bghero" src="signup-bg.jpg" alt="">
+    <div class="bgcollage">
+      <img src="signup/c2.jpg" alt="" loading="lazy">
+      <img src="gallery/g29.jpg" alt="" loading="lazy">
+      <img src="gallery/g36.jpg" alt="" loading="lazy">
+      <img src="gallery/g25.jpg" alt="" loading="lazy">
+      <img src="gallery/g30.jpg" alt="" loading="lazy">
+      <img src="gallery/g33.jpg" alt="" loading="lazy">
+    </div>
   </div>
   <span class="bg-cap">MEDLIFE SLT &middot; Lima, Peru &middot; May 2026</span>
   <div class="wrap">
@@ -310,7 +327,7 @@
         <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.149-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.885-9.885 9.885M20.52 3.449C18.24 1.245 15.24 0 12.045 0 5.463 0 .104 5.359.101 11.945c0 2.096.549 4.14 1.595 5.945L0 24l6.335-1.652a11.882 11.882 0 005.71 1.447h.005c6.585 0 11.946-5.36 11.949-11.945a11.86 11.86 0 00-3.493-8.442"/></svg>
         Join the group chat
       </a>
-      <p>Trip updates, fundraiser events, countdowns, and everyone else who's going. Join after you've filled the form.</p>
+      <p>Trip updates, fundraising events, promotional events, and everything else going on. Join after you've filled the form.</p>
     </div>
   </div>
 </section>
