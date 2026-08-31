@@ -97,9 +97,9 @@
   /* sign-up */
   .signup{position:relative; color:#fbf7f1; border:0; overflow:hidden; background:var(--deep);}
   .signup .bgstack{position:absolute; top:0; left:0; right:0; z-index:0; display:flex; flex-direction:column; height:720px; overflow:hidden;}
-  .signup .bghero{width:100%; height:auto; flex:0 0 auto; display:block;}
-  .signup .bgcollage{flex:1 1 auto; min-height:0; display:grid; grid-template-columns:1fr 1fr; grid-auto-rows:1fr; gap:3px;}
-  .signup .bgcollage img{width:100%; height:100%; min-height:0; object-fit:cover; object-position:center 30%; display:block;}
+  .signup .bgstack img{width:100%; flex:1 1 0; min-height:0; object-fit:cover; display:block;}
+  .signup .bgstack img:nth-child(1){object-position:center 34%;}
+  .signup .bgstack img:nth-child(2){object-position:center 44%;}
   .signup::before{content:""; position:absolute; inset:0; z-index:1; background:
     linear-gradient(180deg, rgba(9,25,31,.85) 0%, rgba(9,25,31,.62) 19%, rgba(9,25,31,.42) 40%, rgba(9,25,31,.42) 73%, rgba(9,25,31,.80) 91%, var(--deep) 100%);}
   .signup > .wrap{position:relative; z-index:2;}
@@ -199,7 +199,6 @@
     <img src="gallery/g22.jpg" alt="A volunteer giving a young child a fluoride treatment at the dental station" loading="lazy">
     <img src="gallery/g23.jpg" alt="Volunteers at the mobile pharmacy handing out medication in Lima, Peru" loading="lazy">
     <img src="gallery/g24.jpg" alt="The full MEDLIFE volunteer team on a rooftop above Lima at the end of a clinic day" loading="lazy">
-    <img src="gallery/g25.jpg" alt="Three Sault College volunteers at the hydration station of a MEDLIFE mobile clinic" loading="lazy">
     <img src="gallery/g26.jpg" alt="The whole Service Learning Trip cohort gathered around the MEDLIFE banner" loading="lazy">
     <img src="gallery/g27.jpg" alt="Volunteers playing chess at the hostel cafe on a rest evening in Lima" loading="lazy">
     <img src="gallery/g28.jpg" alt="A Peruvian milanesa dinner out with the group after a clinic day" loading="lazy">
@@ -212,6 +211,10 @@
     <img src="gallery/g35.jpg" alt="Arriving at Lima airport and meeting the giant guinea pig mascot" loading="lazy">
     <img src="gallery/g36.jpg" alt="The Sault College group with their MEDLIFE trip leader and his family in Lima" loading="lazy">
     <img src="gallery/g37.jpg" alt="A volunteer holding a yoga tree pose on top of a dune buggy near Huacachina" loading="lazy">
+    <img src="gallery/g38.jpg" alt="Three Sault College volunteers in the airport atrium heading home from the Service Learning Trip" loading="lazy">
+    <img src="gallery/g39.jpg" alt="A Sault College volunteer observing an abdominal assessment at the mobile clinic in Lima" loading="lazy">
+    <img src="gallery/g40.jpg" alt="Volunteers working through patient intake paperwork at the mobile clinic" loading="lazy">
+    <img src="gallery/g41.jpg" alt="A Sault College volunteer and a community member running the mobile pharmacy in Lima" loading="lazy">
   </div>
 
   <h3 class="galcap">Riobamba, Ecuador</h3>
@@ -304,15 +307,8 @@
 
 <section class="signup" id="list">
   <div class="bgstack" aria-hidden="true">
-    <img class="bghero" src="signup-bg.jpg" alt="">
-    <div class="bgcollage">
-      <img src="signup/c2.jpg" alt="" loading="lazy">
-      <img src="gallery/g29.jpg" alt="" loading="lazy">
-      <img src="gallery/g36.jpg" alt="" loading="lazy">
-      <img src="gallery/g25.jpg" alt="" loading="lazy">
-      <img src="gallery/g30.jpg" alt="" loading="lazy">
-      <img src="gallery/g33.jpg" alt="" loading="lazy">
-    </div>
+    <img src="signup-bg.jpg" alt="">
+    <img src="signup/team2.jpg" alt="" loading="lazy">
   </div>
   <span class="bg-cap">MEDLIFE SLT &middot; Lima, Peru &middot; May 2026</span>
   <div class="wrap">
